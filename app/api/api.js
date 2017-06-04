@@ -11,7 +11,7 @@ const request =  async (request_data) => {
     let res = await ff.request_async(request_data);
     return res.body;
   } catch (err) {
-    console.error(err);
+    console.log('error:request:', err);
   }
 };
 
@@ -37,7 +37,7 @@ export const verify_credentials = () => {
 };
 
 //随便看看
-export const public_timeline = async (since_id) => {
+export const public_timeline = async () => {
   let request_data = {
     url: 'http://api.fanfou.com/statuses/public_timeline.json',
     method: 'GET',
@@ -49,12 +49,13 @@ export const public_timeline = async (since_id) => {
 };
 
 //显示指定用户及其好友的消息
-export const home_timeline = async () => {
+export const home_timeline = async (params) => {
   let request_data = {
     url: 'http://api.fanfou.com/statuses/home_timeline.json',
     method: 'GET',
     data:{
       //format: 'html',
+      ...params
     }
   };
   return request(request_data);

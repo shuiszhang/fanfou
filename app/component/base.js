@@ -37,16 +37,25 @@ export const TabBarIcon = ({tintColor, focused, icon}) => {
 export const Tweet = ({item}) => {
   return (
     <TouchableOpacity style={style.tweetMain}>
-      <View style={style.tweetHeader}>
-        <Image source={{uri: item.user.profile_image_url}} style={{width:24, height:24}}/>
-        <View style={style.tweetHeaderRight}>
-          <Text>{item.user.name}</Text>
-          <Text>{format_time(item.created_at) + get_source(item.source)}</Text>
+      <View>
+        <View style={style.tweetHeader}>
+          <Image source={{uri: item.user.profile_image_url}} style={{width:24, height:24}}/>
+          <View style={style.tweetHeaderRight}>
+            <Text style={{color: '#3F72AF'}}>{item.user.name}</Text>
+            <Text style={{color: '#4ea1d3'}}>{format_time(item.created_at) + get_source(item.source)}</Text>
+          </View>
         </View>
+        <Text style={{color:'#252c41'}}>
+          {item.text}
+        </Text>
+        {
+          item.photo
+            ?
+            <Image source={{uri: item.photo.thumburl}} style={{width:200, height:200}}/>
+            :
+            null
+        }
       </View>
-      <Text>
-        {item.text}
-      </Text>
     </TouchableOpacity>
   )
 };
@@ -71,7 +80,7 @@ const style = StyleSheet.create({
     borderColor: '#c7d0d5',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#eef3f4',
     padding: 10,
     marginBottom: 3,
   },

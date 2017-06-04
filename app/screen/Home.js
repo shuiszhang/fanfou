@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
 import Button from '../component/Button';
 
@@ -21,23 +22,54 @@ class Home extends Component{
 
   constructor(props){
     super(props);
+
     this.state = {
+      refreshing: false,
+      footRefreshing: false,
       data: [],
-    }
+    };
+
+    this.lastId = '';
   }
 
   componentDidMount() {
     this._fetchData();
   }
 
-  _fetchData = async () => {
+  _fetchData = async (id) => {
     try {
-      let res = await home_timeline();
+      if (id) {
+        this.setState({
+          footRefreshing: true,
+        });
+      } else {
+        this.setState({
+          refreshing: true,
+        });
+      }
+
+      let res = [];
+      if (id) {
+        res = await home_timeline({max_id: id});
+      } else {
+        res = await home_timeline();
+      }
+      if (res) {
+        let lastItem = res[res.length-1];
+        this.lastId = lastItem.id;
+      }
+
+      let newData = res;
+      if (id) {
+        newData = this.state.data.concat(res);
+      }
       this.setState({
-        data: res,
+        refreshing: false,
+        footRefreshing: false,
+        data: newData,
       });
     } catch (e) {
-
+      console.log('error:Home _fetchData:', e);
     }
   };
 
@@ -47,13 +79,40 @@ class Home extends Component{
 
   _keyExtractor = (item, index) => index;
 
+  _onRefresh = () => {
+    this._fetchData();
+  };
+
+  _onEndReached = () => {
+    this._fetchData(this.lastId);
+  };
+
+  _footer = () => {
+    return (
+      <View style={{alignItems:'center', justifyContent:'center'}}>
+        {
+          this.state.footRefreshing
+          ?
+            <ActivityIndicator animating={this.state.footRefreshing}/>
+            :
+            <Text>上拉加载更多</Text>
+        }
+      </View>
+    )
+  };
+
   render(){
     return (
       <FlatList
         data = {this.state.data}
         renderItem = {this._renderItem}
         initialNumToRender = {6}
-        keyExtractor={this._keyExtractor}
+        keyExtractor = {this._keyExtractor}
+        onRefresh = {this._onRefresh}
+        refreshing = {this.state.refreshing}
+        onEndReached = {this._onEndReached}
+        onEndReachedThreshold = {0.1}
+        ListFooterComponent = {this._footer}
       />
     )
   }
