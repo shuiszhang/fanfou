@@ -8,8 +8,8 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native';
-
-import {ListItem, Line, TabBarIcon, Tweet} from '../component/base';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import {TabBarIcon, Tweet} from '../component/base';
 import {home_timeline} from '../api/api';
 
 class Home extends Component{
@@ -26,6 +26,8 @@ class Home extends Component{
       refreshing: false,
       footRefreshing: false,
       data: [],
+      showImageViewer: false,
+      image: [{url:''}],
     };
 
     this.lastId = '';
@@ -73,7 +75,7 @@ class Home extends Component{
   };
 
   _renderItem = ({item}) => {
-    return <Tweet item={item}/>
+    return <Tweet item={item}/>;
   };
 
   _keyExtractor = (item, index) => index;
@@ -102,17 +104,19 @@ class Home extends Component{
 
   render(){
     return (
-      <FlatList
-        data = {this.state.data}
-        renderItem = {this._renderItem}
-        initialNumToRender = {6}
-        keyExtractor = {this._keyExtractor}
-        onRefresh = {this._onRefresh}
-        refreshing = {this.state.refreshing}
-        onEndReached = {this._onEndReached}
-        onEndReachedThreshold = {0.1}
-        ListFooterComponent = {this._footer}
-      />
+      <View>
+        <FlatList
+          data = {this.state.data}
+          renderItem = {this._renderItem}
+          initialNumToRender = {6}
+          keyExtractor = {this._keyExtractor}
+          onRefresh = {this._onRefresh}
+          refreshing = {this.state.refreshing}
+          onEndReached = {this._onEndReached}
+          onEndReachedThreshold = {0.1}
+          ListFooterComponent = {this._footer}
+        />
+      </View>
     )
   }
 }

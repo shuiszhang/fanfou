@@ -3,13 +3,10 @@
  */
 import React, { Component } from 'react';
 import {
-  Button,
-  Text,
-  View,
   FlatList
 } from 'react-native';
 
-import {ListItem, Line, TabBarIcon, Tweet} from '../component/base';
+import {TabBarIcon, Tweet} from '../component/base';
 import {mentions} from '../api/api';
 
 class Message extends Component{

@@ -3,12 +3,11 @@
  */
 import React, { Component } from 'react';
 import {
-  Button,
-  Text,
   View,
   FlatList
 } from 'react-native';
-import {ListItem, Line, TabBarIcon, Tweet} from '../component/base';
+import ImageViewer from 'react-native-image-zoom-viewer';
+import {TabBarIcon, Tweet} from '../component/base';
 
 import {public_timeline} from '../api/api';
 
@@ -23,6 +22,8 @@ class LookAround extends Component{
     super(props);
     this.state = {
       data: [],
+      showImageViewer: false,
+      image: [{url:''}],
     }
   }
 
@@ -42,19 +43,21 @@ class LookAround extends Component{
   };
 
   _renderItem = ({item}) => {
-    return <Tweet item={item}/>
+    return <Tweet item={item}/>;
   };
 
   _keyExtractor = (item, index) => index;
 
   render(){
     return (
-      <FlatList
-        data = {this.state.data}
-        renderItem = {this._renderItem}
-        initialNumToRender = {6}
-        keyExtractor={this._keyExtractor}
-      />
+      <View>
+        <FlatList
+          data = {this.state.data}
+          renderItem = {this._renderItem}
+          initialNumToRender = {6}
+          keyExtractor={this._keyExtractor}
+        />
+      </View>
     )
   }
 }
