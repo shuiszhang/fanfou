@@ -14,6 +14,7 @@ import {mentions} from '../api/api';
 
 class Message extends Component{
   static navigationOptions = ({ navigation }) => ({
+    title: '消息',
     tabBarLabel: '消息',
     tabBarIcon: <TabBarIcon icon={require('../img/message.png')}/>
   });

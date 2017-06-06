@@ -17,7 +17,9 @@ class Button extends Component{
     height : 40,
     width : 100,
     loading : false,
-    fontSize : 14
+    fontSize : 14,
+    borderRadius: 10,
+    fontColor: 'white'
   };
 
   onPress(){
@@ -27,10 +29,10 @@ class Button extends Component{
   }
 
   render(){
-    const {height, width, fontColor, backgroundColor, children, loading, fontSize} = this.props;
-    let borderRadius = 0;
+    const {height, width, fontColor, backgroundColor, borderRadius, loading, fontSize, title} = this.props;
     let fSize = Platform.OS === 'android' ? fontSize * 1.2 : fontSize;
     if(loading) {
+      console.log('aaa');
       return (
         <View
           style={{backgroundColor, width,  height, ...flexCenter, borderRadius}}>
@@ -38,11 +40,12 @@ class Button extends Component{
         </View>
       )
     }
+    console.log('bbb');
     return(
       <TouchableOpacity
         onPress={this.onPress.bind(this)}
         style={{backgroundColor, width,  height, ...flexCenter, borderRadius, ...this.props.style}}>
-        <Text style={{color : 'white', fontSize : fSize, fontWeight : Platform.OS === 'android' ? "bold" : "normal"}}>{children}</Text>
+        <Text style={{color : fontColor, fontSize : fSize, fontWeight : Platform.OS === 'android' ? "bold" : "normal"}}>{title}</Text>
       </TouchableOpacity>
     )
   }

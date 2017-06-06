@@ -51,7 +51,9 @@ export const Tweet = ({item}) => {
         {
           item.photo
             ?
-            <Image source={{uri: item.photo.thumburl}} style={{width:200, height:200}}/>
+            <View style={{justifyContent:'center', alignItems:'center'}}>
+              <Image source={{uri: item.photo.largeurl}} resizeMode={'contain'} style={{height:200, width:200}}/>
+            </View>
             :
             null
         }

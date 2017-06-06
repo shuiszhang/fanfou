@@ -8,10 +8,9 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native';
-import Button from '../component/Button';
 
 import {ListItem, Line, TabBarIcon, Tweet} from '../component/base';
-import {home_timeline} from '../api/api'
+import {home_timeline} from '../api/api';
 
 class Home extends Component{
   static navigationOptions = ({ navigation }) => ({

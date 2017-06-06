@@ -10,5 +10,6 @@ import Favorite from './Favorite';
 import FeedBack from './FeedBack';
 import FriendRequest from './FriendRequest';
 import LookAround from './LookAround';
+import Edit from './Edit';
 
-export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround};
+export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit};

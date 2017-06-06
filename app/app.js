@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {getAuthToken} from './util/storage';
-import {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround} from './screen';
+import {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit} from './screen';
 
 class App extends Component{
   constructor(){
@@ -87,6 +87,9 @@ const Navigator = StackNavigator(
     },
     LookAround: {
       screen: LookAround,
+    },
+    Edit: {
+      screen: Edit,
     }
   },
   /*{

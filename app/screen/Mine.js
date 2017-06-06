@@ -77,11 +77,9 @@ class Mine extends Component{
           </View>
         }
         <Line/>
-        <ListItem title='我的消息' onPress={this._onPress('Message')}/>
+        <ListItem title='发饭' onPress={this._onPress('Edit')}/>
         <Line/>
         <ListItem title='我的收藏' onPress={this._onPress('Favorite')}/>
-        <Line/>
-        <ListItem title='随便看看' onPress={this._onPress('LookAround')}/>
         <Line/>
         <ListItem title='好友请求' onPress={this._onPress('FriendRequest')}/>
         <Line/>
@@ -107,7 +105,7 @@ const Info = ({profile_image_url, name, location, friends_count, followers_count
         <Text>{name}</Text>
         <Text>{location}</Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent:'center'}}>
+      <View style={{flexDirection: 'row', justifyContent:'space-around', backgroundColor:'#95E1D3'}}>
         <NumCell label={'关注'} num={friends_count}/>
         <NumCell label={'粉丝'} num={followers_count}/>
         <NumCell label={'消息'} num={statuses_count}/>

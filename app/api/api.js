@@ -72,3 +72,16 @@ export const mentions = async () => {
   };
   return request(request_data);
 };
+
+//发送消息
+export const update = async (status_text) => {
+  let request_data = {
+    url: 'http://api.fanfou.com/statuses/update.json',
+    method: 'POST',
+    data:{
+      //format: 'html',
+      status: status_text
+    }
+  };
+  return request(request_data);
+};
