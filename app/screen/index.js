@@ -11,5 +11,6 @@ import FeedBack from './FeedBack';
 import FriendRequest from './FriendRequest';
 import LookAround from './LookAround';
 import Edit from './Edit';
+import PeopleList from './PeopleList';
 
-export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit};
+export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList};

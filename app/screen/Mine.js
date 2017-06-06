@@ -7,7 +7,8 @@ import {
   Text,
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
 import {ListItem, Line, TabBarIcon} from '../component/base';
@@ -59,8 +60,8 @@ class Mine extends Component{
     }
   };
 
-  _onPress = (route) => () => {
-    this.props.navigation.navigate(route);
+  _onPress = (route, params) => () => {
+    this.props.navigation.navigate(route, params);
   };
 
   render(){
@@ -70,7 +71,7 @@ class Mine extends Component{
         {
           this.state.isLogin
           ?
-          <Info {...this.state}/>
+          <Info {...this.state} click={this._onPress}/>
           :
           <View style={style.login}>
             <Button title="登录" onPress={this._onPress('Login')}/>
@@ -90,8 +91,7 @@ class Mine extends Component{
   }
 }
 
-const Info = ({profile_image_url, name, location, friends_count, followers_count, statuses_count}) => {
-  console.log('aaaa:', profile_image_url);
+const Info = ({profile_image_url, name, location, friends_count, followers_count, statuses_count, click}) => {
   return (
     <View>
       <View style={{alignItems: 'center'}}>
@@ -106,20 +106,22 @@ const Info = ({profile_image_url, name, location, friends_count, followers_count
         <Text>{location}</Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent:'space-around', backgroundColor:'#95E1D3'}}>
-        <NumCell label={'关注'} num={friends_count}/>
-        <NumCell label={'粉丝'} num={followers_count}/>
-        <NumCell label={'消息'} num={statuses_count}/>
+        <NumCell label={'关注'} num={friends_count} click={click('PeopleList', {title: '关注'})}/>
+        <NumCell label={'粉丝'} num={followers_count} click={click('PeopleList', {title: '粉丝'})}/>
+        <NumCell label={'消息'} num={statuses_count} click={click('PeopleList', {title: '消息'})}/>
       </View>
     </View>
   )
 };
 
-const NumCell = ({label, num}) => {
+const NumCell = ({label, num, click}) => {
   return (
-    <View style={{alignItems: 'center'}}>
-      <Text>{label}</Text>
-      <Text>{num}</Text>
-    </View>
+    <TouchableOpacity onPress={click}>
+      <View style={{alignItems: 'center'}}>
+        <Text>{label}</Text>
+        <Text>{num}</Text>
+      </View>
+    </TouchableOpacity>
   )
 };
 
