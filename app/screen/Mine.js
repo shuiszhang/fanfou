@@ -80,6 +80,8 @@ class Mine extends Component{
         <Line/>
         <ListItem title='发饭' onPress={this._onPress('Edit')}/>
         <Line/>
+        <ListItem title='搜索' onPress={this._onPress('Search')}/>
+        <Line/>
         <ListItem title='我的收藏' onPress={this._onPress('TweetList', {title: '我的收藏'})}/>
         <Line/>
         <ListItem title='好友请求' onPress={this._onPress('FriendRequest')}/>

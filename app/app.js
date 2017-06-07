@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {getAuthToken} from './util/storage';
-import {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList} from './screen';
+import {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList, Search} from './screen';
 
 class App extends Component{
   constructor(){
@@ -96,6 +96,9 @@ const Navigator = StackNavigator(
     },
     TweetList: {
       screen: TweetList,
+    },
+    Search: {
+      screen: Search,
     }
   },
   /*{

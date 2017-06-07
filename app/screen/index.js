@@ -13,5 +13,6 @@ import LookAround from './LookAround';
 import Edit from './Edit';
 import PeopleList from './PeopleList';
 import TweetList from './TweetList';
+import Search from './Search';
 
-export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList};
+export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList, Search};

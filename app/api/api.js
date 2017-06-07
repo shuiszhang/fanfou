@@ -133,3 +133,16 @@ export const user_timeline = async () => {
   };
   return request(request_data);
 };
+
+//搜索全站消息
+export const search = async (query_word) => {
+  let request_data = {
+    url: 'http://api.fanfou.com/search/public_timeline.json',
+    method: 'GET',
+    data:{
+      //format: 'html',
+      q: query_word,
+    }
+  };
+  return request(request_data);
+};
