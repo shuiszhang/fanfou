@@ -4,7 +4,9 @@
 import React, { Component } from 'react';
 import {
   View,
-  FlatList
+  Image,
+  FlatList,
+  TouchableWithoutFeedback
 } from 'react-native';
 import {TabBarIcon, TweetSeparator} from '../component/base';
 import Tweet from '../component/Tweet';
@@ -15,7 +17,14 @@ class LookAround extends Component{
   static navigationOptions = ({ navigation }) => ({
     title: '随便看看',
     tabBarLabel: '发现',
-    tabBarIcon: <TabBarIcon icon={require('../img/discovery.png')}/>
+    tabBarIcon: <TabBarIcon icon={require('../img/discovery.png')}/>,
+    headerRight: (
+      <TouchableWithoutFeedback>
+        <View style={{padding:10}}>
+          <Image source={require('../img/refresh.png')}/>
+        </View>
+      </TouchableWithoutFeedback>
+    )
   });
 
   constructor(props){
@@ -43,7 +52,7 @@ class LookAround extends Component{
   };
 
   _renderItem = ({item}) => {
-    return <Tweet item={item}/>;
+    return <Tweet item={item} navigation={this.props.navigation}/>;
   };
 
   _keyExtractor = (item, index) => index;
