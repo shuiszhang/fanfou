@@ -45,6 +45,7 @@ class Tweet extends Component {
     if (arr) {
       //@饭否用户
       console.log(arr[1]);
+      this.props.navigation.navigate('Page', {id: arr[1]});
     } else {
       Linking.openURL(url);
     }

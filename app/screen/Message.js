@@ -41,7 +41,7 @@ class Message extends Component{
   };
 
   _renderItem = ({item}) => {
-    return <Tweet item={item}/>
+    return <Tweet item={item} navigation={this.props.navigation}/>
   };
 
   _keyExtractor = (item, index) => index;

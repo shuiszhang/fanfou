@@ -3,9 +3,7 @@
  */
 import React, { Component } from 'react';
 import {
-  Text,
   View,
-  Image,
   FlatList,
 } from 'react-native';
 import {TweetSeparator} from '../component/base';
@@ -49,7 +47,7 @@ class TweetList extends Component{
   };
 
   _renderItem = ({item}) => {
-    return <Tweet item={item}/>;
+    return <Tweet item={item} navigation={this.props.navigation}/>;
   };
 
   _renderSeparator = () => {
