@@ -11,7 +11,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 import {search} from '../api/api';
-import {Tweet, TweetSeparator} from '../component/base';
+import {TweetSeparator} from '../component/base';
+import Tweet from '../component/Tweet';
 
 class Search extends Component{
   static navigationOptions = ({ navigation }) => ({

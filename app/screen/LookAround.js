@@ -6,7 +6,8 @@ import {
   View,
   FlatList
 } from 'react-native';
-import {TabBarIcon, Tweet, TweetSeparator} from '../component/base';
+import {TabBarIcon, TweetSeparator} from '../component/base';
+import Tweet from '../component/Tweet';
 
 import {public_timeline} from '../api/api';
 

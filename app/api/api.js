@@ -42,7 +42,7 @@ export const public_timeline = async () => {
     url: 'http://api.fanfou.com/statuses/public_timeline.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
     }
   };
   return request(request_data);
@@ -54,7 +54,7 @@ export const home_timeline = async (params) => {
     url: 'http://api.fanfou.com/statuses/home_timeline.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
       ...params
     }
   };
@@ -67,7 +67,7 @@ export const mentions = async () => {
     url: 'http://api.fanfou.com/statuses/mentions.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
     }
   };
   return request(request_data);
@@ -116,7 +116,7 @@ export const favorites = async () => {
     url: 'http://api.fanfou.com/favorites/id.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
     }
   };
   return request(request_data);
@@ -128,7 +128,7 @@ export const user_timeline = async () => {
     url: 'http://api.fanfou.com/statuses/user_timeline.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
     }
   };
   return request(request_data);
@@ -140,7 +140,7 @@ export const search = async (query_word) => {
     url: 'http://api.fanfou.com/search/public_timeline.json',
     method: 'GET',
     data:{
-      //format: 'html',
+      format: 'html',
       q: query_word,
     }
   };

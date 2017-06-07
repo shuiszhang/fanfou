@@ -8,7 +8,8 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {TweetSeparator, Tweet} from '../component/base';
+import {TweetSeparator} from '../component/base';
+import Tweet from '../component/Tweet';
 import {favorites, user_timeline} from '../api/api';
 
 class TweetList extends Component{
