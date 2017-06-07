@@ -8,8 +8,7 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native';
-import ImageViewer from 'react-native-image-zoom-viewer';
-import {TabBarIcon, Tweet} from '../component/base';
+import {TabBarIcon, Tweet, TweetSeparator} from '../component/base';
 import {home_timeline} from '../api/api';
 
 class Home extends Component{
@@ -102,6 +101,10 @@ class Home extends Component{
     )
   };
 
+  _renderSeparator = () => {
+    return <TweetSeparator/>
+  };
+
   render(){
     return (
       <View>
@@ -115,6 +118,7 @@ class Home extends Component{
           onEndReached = {this._onEndReached}
           onEndReachedThreshold = {0.1}
           ListFooterComponent = {this._footer}
+          ItemSeparatorComponent={this._renderSeparator}
         />
       </View>
     )

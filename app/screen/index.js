@@ -12,5 +12,6 @@ import FriendRequest from './FriendRequest';
 import LookAround from './LookAround';
 import Edit from './Edit';
 import PeopleList from './PeopleList';
+import TweetList from './TweetList';
 
-export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList};
+export {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList};

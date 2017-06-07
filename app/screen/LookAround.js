@@ -6,7 +6,7 @@ import {
   View,
   FlatList
 } from 'react-native';
-import {TabBarIcon, Tweet} from '../component/base';
+import {TabBarIcon, Tweet, TweetSeparator} from '../component/base';
 
 import {public_timeline} from '../api/api';
 
@@ -47,6 +47,10 @@ class LookAround extends Component{
 
   _keyExtractor = (item, index) => index;
 
+  _renderSeparator = () => {
+    return <TweetSeparator/>
+  };
+
   render(){
     return (
       <View>
@@ -55,6 +59,7 @@ class LookAround extends Component{
           renderItem = {this._renderItem}
           initialNumToRender = {6}
           keyExtractor={this._keyExtractor}
+          ItemSeparatorComponent={this._renderSeparator}
         />
       </View>
     )

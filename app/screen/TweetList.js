@@ -1,5 +1,5 @@
 /**
- * Created by shuis on 2017/6/6.
+ * Created by shuis on 2017/6/7.
  */
 import React, { Component } from 'react';
 import {
@@ -8,21 +8,20 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {Line} from '../component/base';
+import {TweetSeparator, Tweet} from '../component/base';
+import {favorites, user_timeline} from '../api/api';
 
-import {friends, followers} from '../api/api';
-
-class PeopleList extends Component{
+class TweetList extends Component{
   static navigationOptions = ({ navigation }) => ({
     headerTitle: navigation.state.params.title,
   });
 
   constructor(props){
     super(props);
-    if (this.props.navigation.state.params.title === '关注') {
-      this.fetch = friends;
-    } else if (this.props.navigation.state.params.title === '粉丝') {
-      this.fetch = followers;
+    if (this.props.navigation.state.params.title === '我的消息') {
+      this.fetch = user_timeline;
+    } else if (this.props.navigation.state.params.title === '我的收藏') {
+      this.fetch = favorites;
     } else {
       this.fetch = null;
     }
@@ -49,19 +48,11 @@ class PeopleList extends Component{
   };
 
   _renderItem = ({item}) => {
-    return (
-      <View style={{flexDirection: 'row', padding: 10}}>
-        <Image source={{url: item.profile_image_url}} style={{width:20, height:20, marginRight: 5}}/>
-        <View>
-          <Text style={{color: '#3F72AF'}}>{item.name}</Text>
-          <Text>{item.description}</Text>
-        </View>
-      </View>
-    )
+    return <Tweet item={item}/>;
   };
 
   _renderSeparator = () => {
-    return <Line/>
+    return <TweetSeparator/>
   };
 
   _keyExtractor = (item, index) => index;
@@ -81,4 +72,4 @@ class PeopleList extends Component{
   }
 }
 
-export default PeopleList;
+export default TweetList;

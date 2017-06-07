@@ -27,6 +27,12 @@ export const Line = () => {
   )
 };
 
+export const TweetSeparator = () => {
+  return (
+    <View style={style.separator}/>
+  )
+};
+
 export const TabBarIcon = ({tintColor, focused, icon}) => {
   return (
     <View style={style.tabBarIcon}>
@@ -104,6 +110,11 @@ const style = StyleSheet.create({
     backgroundColor: '#c7d0d5'
   },
 
+  separator: {
+    height: 3,
+    backgroundColor: '#e9e9ef',
+  },
+
   tabBarIcon: {
     //height: 24,
   },
@@ -114,7 +125,7 @@ const style = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     backgroundColor: '#eef3f4',
     padding: 10,
-    marginBottom: 3,
+    //marginBottom: 3,
   },
 
   tweetHeader: {

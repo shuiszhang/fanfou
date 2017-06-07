@@ -109,3 +109,27 @@ export const followers = async () => {
   };
   return request(request_data);
 };
+
+//收藏的消息
+export const favorites = async () => {
+  let request_data = {
+    url: 'http://api.fanfou.com/favorites/id.json',
+    method: 'GET',
+    data:{
+      //format: 'html',
+    }
+  };
+  return request(request_data);
+};
+
+//指定用户已发送消息
+export const user_timeline = async () => {
+  let request_data = {
+    url: 'http://api.fanfou.com/statuses/user_timeline.json',
+    method: 'GET',
+    data:{
+      //format: 'html',
+    }
+  };
+  return request(request_data);
+};

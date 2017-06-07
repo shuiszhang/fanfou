@@ -80,7 +80,7 @@ class Mine extends Component{
         <Line/>
         <ListItem title='发饭' onPress={this._onPress('Edit')}/>
         <Line/>
-        <ListItem title='我的收藏' onPress={this._onPress('Favorite')}/>
+        <ListItem title='我的收藏' onPress={this._onPress('TweetList', {title: '我的收藏'})}/>
         <Line/>
         <ListItem title='好友请求' onPress={this._onPress('FriendRequest')}/>
         <Line/>
@@ -94,7 +94,7 @@ class Mine extends Component{
 const Info = ({profile_image_url, name, location, friends_count, followers_count, statuses_count, click}) => {
   return (
     <View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{alignItems: 'center', padding: 10}}>
         {
           profile_image_url
           ?
@@ -105,10 +105,10 @@ const Info = ({profile_image_url, name, location, friends_count, followers_count
         <Text>{name}</Text>
         <Text>{location}</Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent:'space-around', backgroundColor:'#95E1D3'}}>
+      <View style={{flexDirection: 'row', justifyContent:'space-around', backgroundColor:'#95E1D3', padding: 10}}>
         <NumCell label={'关注'} num={friends_count} click={click('PeopleList', {title: '关注'})}/>
         <NumCell label={'粉丝'} num={followers_count} click={click('PeopleList', {title: '粉丝'})}/>
-        <NumCell label={'消息'} num={statuses_count} click={click('PeopleList', {title: '消息'})}/>
+        <NumCell label={'消息'} num={statuses_count} click={click('TweetList', {title: '我的消息'})}/>
       </View>
     </View>
   )

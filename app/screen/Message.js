@@ -6,7 +6,7 @@ import {
   FlatList
 } from 'react-native';
 
-import {TabBarIcon, Tweet} from '../component/base';
+import {TabBarIcon, Tweet, TweetSeparator} from '../component/base';
 import {mentions} from '../api/api';
 
 class Message extends Component{
@@ -45,6 +45,10 @@ class Message extends Component{
 
   _keyExtractor = (item, index) => index;
 
+  _renderSeparator = () => {
+    return <TweetSeparator/>
+  };
+
   render(){
     return (
       <FlatList
@@ -52,6 +56,7 @@ class Message extends Component{
         renderItem = {this._renderItem}
         initialNumToRender = {6}
         keyExtractor={this._keyExtractor}
+        ItemSeparatorComponent={this._renderSeparator}
       />
     )
   }
