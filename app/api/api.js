@@ -85,3 +85,27 @@ export const update = async (status_text) => {
   };
   return request(request_data);
 };
+
+//关注
+export const friends = async () => {
+  let request_data = {
+    url: 'http://api.fanfou.com/users/friends.json',
+    method: 'GET',
+    data:{
+      //format: 'html',
+    }
+  };
+  return request(request_data);
+};
+
+//粉丝
+export const followers = async () => {
+  let request_data = {
+    url: 'http://api.fanfou.com/users/followers.json',
+    method: 'GET',
+    data:{
+      //format: 'html',
+    }
+  };
+  return request(request_data);
+};

@@ -6,7 +6,6 @@ import {
   View,
   FlatList
 } from 'react-native';
-import ImageViewer from 'react-native-image-zoom-viewer';
 import {TabBarIcon, Tweet} from '../component/base';
 
 import {public_timeline} from '../api/api';
