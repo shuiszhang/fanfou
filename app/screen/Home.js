@@ -5,8 +5,10 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
+  Image,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableWithoutFeedback
 } from 'react-native';
 import {TabBarIcon, TweetSeparator} from '../component/base';
 import Tweet from '../component/Tweet';
@@ -16,7 +18,14 @@ class Home extends Component{
   static navigationOptions = ({ navigation }) => ({
     tabBarLabel: '首页',
     headerTitle: '饭否',
-    tabBarIcon: <TabBarIcon icon={require('../img/home.png')}/>
+    tabBarIcon: <TabBarIcon icon={require('../img/home.png')}/>,
+    headerRight: (
+      <TouchableWithoutFeedback onPress={()=>{navigation.state.params.onPress()}}>
+        <View style={{padding:10}}>
+          <Image source={require('../img/edit.png')}/>
+        </View>
+      </TouchableWithoutFeedback>
+    )
   });
 
   constructor(props){
@@ -31,6 +40,12 @@ class Home extends Component{
     };
 
     this.lastId = '';
+  }
+
+  componentWillMount() {
+    this.props.navigation.setParams({
+      onPress:() => this.props.navigation.navigate('Edit'),
+    })
   }
 
   componentDidMount() {

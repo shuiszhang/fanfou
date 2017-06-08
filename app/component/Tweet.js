@@ -60,7 +60,7 @@ class Tweet extends Component {
             <Image source={{uri: item.user.profile_image_url}} style={{width:24, height:24}}/>
             <View style={style.tweetHeaderRight}>
               <Text style={{color: '#3F72AF'}}>{item.user.name}</Text>
-              <Text style={{color: '#4ea1d3'}}>{format_time(item.created_at) + get_source(item.source)}</Text>
+              <Text style={{color: '#9baec8'}}>{format_time(item.created_at) + ' ' + get_source(item.source)}</Text>
             </View>
           </View>
           <HTMLView
@@ -72,7 +72,7 @@ class Tweet extends Component {
           {
             item.photo
               ?
-              <View style={{justifyContent:'center', alignItems:'center'}}>
+              <View style={{justifyContent:'center', alignItems:'center', marginTop: 5}}>
                 <Image source={{uri: item.photo.largeurl}} resizeMode={'contain'} style={{height:200, width:200}}/>
               </View>
               :
@@ -89,7 +89,7 @@ class Tweet extends Component {
 
 const tweet = StyleSheet.create({
   a: {
-    color: '#169B62',
+    color: '#1094ab',
   },
   div: {
     color: '#252c41',
