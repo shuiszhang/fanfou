@@ -19,7 +19,7 @@ class LookAround extends Component{
     tabBarLabel: '发现',
     tabBarIcon: <TabBarIcon icon={require('../img/discovery.png')}/>,
     headerRight: (
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={()=>{navigation.state.params.onPress()}}>
         <View style={{padding:10}}>
           <Image source={require('../img/refresh.png')}/>
         </View>
@@ -34,6 +34,12 @@ class LookAround extends Component{
       showImageViewer: false,
       image: [{url:''}],
     }
+  }
+
+  componentWillMount() {
+    this.props.navigation.setParams({
+      onPress:this._fetch,
+    })
   }
 
   componentDidMount() {
