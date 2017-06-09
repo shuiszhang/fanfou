@@ -47,7 +47,15 @@ class Tweet extends Component {
       console.log(arr[1]);
       this.props.navigation.navigate('Page', {id: arr[1]});
     } else {
-      Linking.openURL(url);
+      if (url.startsWith('http')) {
+        // http://t.cn/afasf
+        //"“每次看到这些宝贝们，她甚是满意。”<a href="http://t.cn/RSH4cKA" title="http://t.cn/RSH4cKA" rel="nofollow" target="_blank">http://t.cn/RSH4cKA</a>"
+        Linking.openURL(url);
+      } else if (url.startsWith('/q/')) {
+        //#topic#    "#<a href="/q/%E6%88%91%E7%8C%AB">我猫</a>#"
+        let topic = url.substr(3);
+        this.props.navigation.navigate('Search', {query: decodeURI(topic)});
+      }
     }
   };
 

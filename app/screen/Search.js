@@ -17,7 +17,7 @@ import Tweet from '../component/Tweet';
 class Search extends Component{
   static navigationOptions = ({ navigation }) => ({
     headerTitle: (
-      <View style={{alignItems: 'center', flexDirection: 'row', backgroundColor: '#e9e9ef', margin: 5, flex: 1, paddingLeft: 5}}>
+      <View style={{alignItems: 'center', flexDirection: 'row', backgroundColor: '#e9e9ef', margin: 5, flex: 1, paddingLeft: 5, borderRadius: 5}}>
         <Image source={require('../img/search.png')}/>
         <TextInput
           autoCapitalize={'none'}
@@ -48,6 +48,14 @@ class Search extends Component{
       onPress:this._fetchData,
       onChange: this._onChange,
     })
+  }
+
+  componentDidMount(){
+    if (this.props.navigation.state.params && this.props.navigation.state.params.query) {
+      this.setState({
+        query: this.props.navigation.state.params.query,
+      }, this._fetchData);
+    }
   }
 
   _onChange = (event) => {

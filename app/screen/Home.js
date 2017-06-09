@@ -74,7 +74,6 @@ class Home extends Component{
         let lastItem = res[res.length-1];
         this.lastId = lastItem.id;
       }
-
       let newData = res;
       if (id) {
         newData = this.state.data.concat(res);
