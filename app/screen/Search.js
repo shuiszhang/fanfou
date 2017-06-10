@@ -22,7 +22,8 @@ class Search extends Component{
         <TextInput
           autoCapitalize={'none'}
           autoCorrect={false}
-          style={{flex:1, paddingLeft: 5}}
+          underlineColorAndroid="transparent"
+          style={{flex:1, paddingLeft: 5, padding: 0,}}
           onChange={navigation.state.params && navigation.state.params.onChange}
         />
       </View>

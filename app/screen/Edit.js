@@ -16,6 +16,7 @@ import {update} from '../api/api';
 class Edit extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: '发饭',
+    headerRight: <View />
   });
 
   constructor(props){
@@ -58,12 +59,13 @@ class Edit extends Component {
         <TextInput
           placeholder={'有什么想说的...'}
           placeholderTextColor={'#727272'}
+          underlineColorAndroid="transparent"
           autoCapitalize={'none'}
           autoCorrect={false}
           multiline={true}
           onChangeText={this._onChangeText}
           value={this.state.text}
-          style={{height: '50%', borderWidth: StyleSheet.hairlineWidth, borderColor: '#727272', padding:5}}
+          style={{height: '50%', borderWidth: StyleSheet.hairlineWidth, borderColor: '#727272', padding:0, textAlignVertical: 'top'}}
         />
         <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
           <Button title="发饭" onPress={this._submit}/>

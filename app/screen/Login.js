@@ -10,6 +10,7 @@ import {
   StyleSheet
 } from 'react-native';
 
+import Toast from 'react-native-root-toast';
 import {auth} from '../api/api';
 
 class Login extends Component{
@@ -39,14 +40,36 @@ class Login extends Component{
 
   _onPress = async () => {
     try {
+      console.log(this.state);
       let res = await auth(this.state);
-      //save token
-      storage.save({
-        key: 'authToken',
-        data: res,
-        expires: null,
-      })
+      if (!res) {
+        //登录失败
+        let toast = Toast.show('用户名或密码错误', {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.BOTTOM,
+          shadow: true,
+          animation: true,
+          hideOnPress: true,
+          delay: 0,
+        });
+      } else {
+        //save token
+        storage.save({
+          key: 'authToken',
+          data: res,
+          expires: null,
+        })
+      }
     } catch (err) {
+      let toast = Toast.show('用户名或密码错误', {
+        duration: Toast.durations.LONG,
+        position: Toast.positions.BOTTOM,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
+      console.log(err);
       if (err.status == '401') {
         //账号或密码错误
       }
@@ -58,13 +81,13 @@ class Login extends Component{
       <View>
         <View style={style.cell}>
           <Image source={require('../img/email.png')}/>
-          <TextInput placeholder={'邮箱'} autoCapitalize={'none'} style={style.input} value={this.state.username} onChangeText={this._onChangeUsername}/>
+          <TextInput placeholder={'邮箱'} autoCapitalize={'none'} style={style.input} underlineColorAndroid="transparent" value={this.state.username} onChangeText={this._onChangeUsername}/>
         </View>
         <View style={style.cell}>
           <Image source={require('../img/password.png')}/>
-          <TextInput placeholder={'密码'} autoCapitalize={'none'} style={style.input} value={this.state.password} onChangeText={this._onChangePassword}/>
+          <TextInput placeholder={'密码'} autoCapitalize={'none'} style={style.input} underlineColorAndroid="transparent" value={this.state.password} onChangeText={this._onChangePassword}/>
         </View>
-        <Button title="登录" onPress={this._onPress} color={'red'} style={{width:100}}/>
+        <Button title="登录" onPress={this._onPress}/>
       </View>
     )
   }
@@ -82,7 +105,8 @@ const style = StyleSheet.create({
   input: {
     width:200,
     height:30,
-    paddingLeft: 10
+    paddingLeft: 10,
+    padding: 0,
   }
 });
 

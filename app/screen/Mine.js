@@ -46,15 +46,22 @@ class Mine extends Component{
   _getUserInfo = async () => {
     try {
       let res = await verify_credentials();
-      storage.save({
-        key: 'userInfo',
-        data: res,
-        expires: null,
-      });
-      this.setState({
-        isLogin: true,
-        ...res
-      });
+      if (res === false) {
+        //未登录
+        this.setState({
+          isLogin: false,
+        });
+      } else {
+        storage.save({
+          key: 'userInfo',
+          data: res,
+          expires: null,
+        });
+        this.setState({
+          isLogin: true,
+          ...res
+        });
+      }
     } catch (err) {
 
     }
@@ -65,7 +72,6 @@ class Mine extends Component{
   };
 
   render(){
-    console.log('nnn:', this.state);
     return (
       <View style={style.main}>
         {

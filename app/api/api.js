@@ -4,8 +4,13 @@ import {getAuthToken} from '../util/storage';
 
 const request =  async (request_data) => {
   try {
+    console.log('request:oauthToken:', oauthToken);
     if (!oauthToken) {
       await getAuthToken();
+      if (isLogin == 0) {
+        //未登录
+        return false;
+      }
     }
     let ff = new Fanfou(Object.assign({}, config, oauthToken));
     let res = await ff.request_async(request_data);

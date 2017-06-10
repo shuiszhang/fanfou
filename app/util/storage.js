@@ -29,6 +29,7 @@ global.storage = new Storage({
 
 export const getAuthToken = async () => {
   try {
+    console.log('getAuthToken:');
     oauthToken = await storage.load({
       key: 'authToken',
       autoSync: false,
@@ -40,5 +41,6 @@ export const getAuthToken = async () => {
     }
   } catch (e) {
     console.log(e);
+    isLogin = 0;
   }
 };

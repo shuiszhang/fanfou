@@ -19,6 +19,7 @@ class Home extends Component{
     tabBarLabel: '首页',
     headerTitle: '饭否',
     tabBarIcon: <TabBarIcon icon={require('../img/home.png')}/>,
+    headerLeft: <View />,
     headerRight: (
       <TouchableWithoutFeedback onPress={()=>{navigation.state.params.onPress()}}>
         <View style={{padding:10}}>
@@ -69,6 +70,10 @@ class Home extends Component{
         res = await home_timeline({max_id: id});
       } else {
         res = await home_timeline();
+      }
+      if (res === false) {
+        //未登录
+        this.props.navigation.navigate('Mine');
       }
       if (res) {
         let lastItem = res[res.length-1];

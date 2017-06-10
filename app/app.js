@@ -2,7 +2,7 @@
  * Created by shuis on 2017/5/22.
  */
 import React, { Component } from 'react';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import {getAuthToken} from './util/storage';
 import {Home, Detail, Message, Mine, Login, Favorite, FeedBack, FriendRequest, LookAround, Edit, PeopleList, TweetList, Search, Page} from './screen';
 
@@ -50,6 +50,7 @@ const Tab = TabNavigator(
     }
   },
   {
+    tabBarComponent: TabBarBottom,
     initialRouteName: 'Home',
     tabBarPosition: 'bottom',
     lazy: true,
@@ -104,13 +105,14 @@ const Navigator = StackNavigator(
       screen: Page,
     }
   },
-  /*{
+  {
     navigationOptions: {
-      headerBackTitle: null,
-      headerTintColor: '#333333',
-      showIcon: true,
+      headerTitleStyle: {alignSelf: 'center'},
+      //headerBackTitle: null,
+      //headerTintColor: '#333333',
+      //showIcon: true,
     },
-  }*/
+  }
 );
 
 export default App;
