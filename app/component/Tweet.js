@@ -9,7 +9,8 @@ import {
   Modal,
   StyleSheet,
   Linking,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableWithoutFeedback
 } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 import ImageViewer from 'react-native-image-zoom-viewer';
@@ -62,8 +63,8 @@ class Tweet extends Component {
   render(){
     let {item} = this.props;
     return (
-      <TouchableOpacity style={style.tweetMain} onPress={this._clickItem(item)}>
-        <View>
+      <TouchableWithoutFeedback>
+        <View style={style.tweetMain}>
           <View style={style.tweetHeader}>
             <Image source={{uri: item.user.profile_image_url}} style={{width:24, height:24}}/>
             <View style={style.tweetHeaderRight}>
@@ -80,9 +81,9 @@ class Tweet extends Component {
           {
             item.photo
               ?
-              <View style={{justifyContent:'center', alignItems:'center', marginTop: 5}}>
+              <TouchableOpacity style={{justifyContent:'center', alignItems:'center', marginTop: 5}} onPress={this._clickItem(item)}>
                 <Image source={{uri: item.photo.largeurl}} resizeMode={'contain'} style={{height:200, width:200}}/>
-              </View>
+              </TouchableOpacity>
               :
               null
           }
@@ -90,7 +91,7 @@ class Tweet extends Component {
             <ImageViewer imageUrls={this.state.image} onClick={this._closeImageViewer}/>
           </Modal>
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     )
   }
 }
