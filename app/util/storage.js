@@ -29,11 +29,13 @@ global.storage = new Storage({
 
 export const getAuthToken = async () => {
   try {
+    //storage.remove({key:'authToken'});
     console.log('getAuthToken:');
     oauthToken = await storage.load({
       key: 'authToken',
       autoSync: false,
     });
+    console.log('oauthToken:', oauthToken);
     if (oauthToken) {
       isLogin = 1;
     } else {

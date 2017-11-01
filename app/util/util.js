@@ -42,3 +42,11 @@ export const format_time = (time) => {
     return `${end.getFullYear()}年${end.getMonth()}月${end.getDay()}日`;
   }
 };
+
+export const parse_auth = (str) => {
+  let obj = {};
+  str.split('&').forEach(v => {
+    obj[v.split('=')[0]] = v.split('=')[1];
+  });
+  return obj;
+};

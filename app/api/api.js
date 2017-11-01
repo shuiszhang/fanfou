@@ -20,8 +20,9 @@ const request =  async (request_data) => {
   }
 };
 
-export const auth = async () => {
+export const auth = async ({username, password}) => {
   try {
+    Object.assign(config, {username, password});
     let ff = new Fanfou(config);
     let res = await ff.auth_async();
     return res.text;

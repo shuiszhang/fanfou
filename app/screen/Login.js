@@ -12,6 +12,7 @@ import {
 
 import Toast from 'react-native-root-toast';
 import {auth} from '../api/api';
+import {parse_auth} from '../util/util'
 
 class Login extends Component{
   static navigationOptions = ({ navigation }) => ({
@@ -54,9 +55,13 @@ class Login extends Component{
         });
       } else {
         //save token
+        console.log('1111111');
+        console.log(res);
+        console.log(parse_auth(res));
+
         storage.save({
           key: 'authToken',
-          data: res,
+          data: parse_auth(res),
           expires: null,
         })
       }
